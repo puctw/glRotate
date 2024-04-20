@@ -58,9 +58,12 @@ const MapScreen = () => {
 
     return (
         <View style={styles.container}>
-            <View style={styles.backContainer}>
+            <View style={styles.buttonContainer}>
                 <TouchableOpacity   TouchableOpacity onPress={() => navigation.back('/')} style={styles.button}>
-                    <Image source={require('../../../assets/backarrow.png')}/>
+                    <Image style={styles.button} source={require('../../../assets/backarrow.png')}/>
+                </TouchableOpacity>
+                <TouchableOpacity   TouchableOpacity onPress={() => navigation.push('/camera')} style={styles.button}>
+                    <Image style={styles.qrbutton} source={require('../../../assets/qrcode.png')}/>
                 </TouchableOpacity>
             </View>
             <MapView
@@ -87,14 +90,11 @@ const MapScreen = () => {
                     strokeWidth={1} 
                 />
             </MapView>
-            <View style={styles.buttonContainer}>
-            <TouchableOpacity   TouchableOpacity onPress={() => navigation.push('/camera')} style={styles.button}>
-                    <Image source={require('../../../assets/qrcode.png')}/>
-                </TouchableOpacity>
-            </View>
         </View>
     );
 };
+
+
 
 const styles = StyleSheet.create({
     container: {
@@ -114,18 +114,21 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         backgroundColor: 'blue',
     },
-    backContainer: {
-        flexDirection: 'row',
-        justifyContent: 'flex-start',
-        width: Dimensions.get('window').width - 10,
-    },
     buttonContainer: {
-        flexDirection: 'column',
-        justifyContent: 'flex-end',
-        alignSelf: 'flex-end'
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        width: Dimensions.get('window').width - 15,
+        marginLeft : 10,
+        marginRight: 10,
+        marginTop : 10,
     },
     button: {
-        
+        width: 45,
+        height: 45,
+    },
+    qrbutton: {
+        width: 40,
+        height: 40,
     },
 });
 

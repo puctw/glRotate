@@ -5,7 +5,7 @@ export const HomeScreenStyle = StyleSheet.create({
         flex: 1,
         justifyContent: 'space-between',
         alignItems: 'center',
-        backgroundColor: '#fff',
+        backgroundColor: '#212120',
     },
     logo: {
         width: 75,
@@ -44,7 +44,7 @@ export const HomeScreenStyle = StyleSheet.create({
     },
     createAccountButtonText: {
         fontSize: 20,
-        color: 'black', 
+        color: 'white', 
     },
 });
 
