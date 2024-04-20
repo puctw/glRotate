@@ -11,11 +11,7 @@ const Home = () => {
 				onPress={() => console.log('Botão pressionado')}
 				style={styles.button}
 			/>
-			<Link push href='./camera' asChild>
-				<Pressable>
-					<Text>Camera</Text>
-				</Pressable>
-			</Link>
+			<Button title='Scanner' onPress={() => navigation.push('/camera')} />
 			<Text style={styles.text}>Bem-vindo à Tela Inicial!</Text>
 		</View>
 	);

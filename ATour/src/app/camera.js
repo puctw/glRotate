@@ -1,6 +1,13 @@
 import { Camera, CameraType } from 'expo-camera';
 import { useState } from 'react';
-import { Button, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import {
+	Button,
+	StyleSheet,
+	Text,
+	TouchableOpacity,
+	View,
+	Image,
+} from 'react-native';
 import { useRouter, Link } from 'expo-router';
 
 export default function CameraScreen() {
@@ -21,9 +28,7 @@ export default function CameraScreen() {
 					We need your permission to show the camera
 				</Text>
 				<Button onPress={requestPermission} title='grant permission' />
-				<Link replace href='/'>
-					Home
-				</Link>
+				<Button onPress={() => navigation.replace('/')} title='Home' />
 			</View>
 		);
 	}
@@ -39,8 +44,12 @@ export default function CameraScreen() {
 			<Camera style={styles.camera} type={type}>
 				<View style={styles.buttonContainer}>
 					<TouchableOpacity style={styles.button} onPress={toggleCameraType}>
-						<Text style={styles.text}>Flip Camera</Text>
+						<Image
+							style={styles.flip}
+							source={require('../../assets/flip.svg')}
+						/>
 					</TouchableOpacity>
+					<Button onPress={() => navigation.replace('/')} title='Home' />
 				</View>
 			</Camera>
 		</View>
@@ -54,21 +63,20 @@ const styles = StyleSheet.create({
 	},
 	camera: {
 		flex: 1,
+		aspectRatio: 3 / 4,
 	},
 	buttonContainer: {
 		flex: 1,
 		flexDirection: 'row',
 		backgroundColor: 'transparent',
-		margin: 64,
 	},
 	button: {
 		flex: 1,
 		alignSelf: 'flex-end',
 		alignItems: 'center',
 	},
-	text: {
-		fontSize: 24,
-		fontWeight: 'bold',
-		color: 'white',
+	flip: {
+		width: 45,
+		height: 45,
 	},
 });
