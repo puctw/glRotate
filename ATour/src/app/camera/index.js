@@ -13,6 +13,7 @@ import {
 } from 'react-native';
 import { useRouter, Link } from 'expo-router';
 import { BarCodeScanner } from 'expo-barcode-scanner';
+import { markUrlAsScanned } from '../urlScanUtility.js';
 
 export default function CameraScreen() {
 	const navigation = useRouter();
@@ -39,23 +40,31 @@ export default function CameraScreen() {
 	};
 
 	const checkAndNavigate = (url) => {
-		const urlPattern = new RegExp(
-			'^(https?:\\/\\/)?' +
+		if (url === "https://a-tour.netlify.app/") {
+			markUrlAsScanned();
+			navigation.navigate('Map');
+		} else {
+			const urlPattern = new RegExp(
+				'^(https?:\\/\\/)?' +
 				'((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' +
 				'((\\d{1,3}\\.){3}\\d{1,3}))' +
 				'(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' +
 				'(\\?[;&a-z\\d%_.~+=-]*)?' +
 				'(\\#[-a-z\\d_]*)?$',
-			'i'
-		);
-		if (urlPattern.test(url)) {
-			Linking.openURL(url).catch((err) =>
-				console.error('Failed to open URL:', err)
+				'i'
 			);
-		} else {
-			Alert.alert('Invalid URL', 'The scanned data is not a valid URL.');
+	
+			if (urlPattern.test(url)) {
+				Linking.openURL(url).catch((err) =>
+					console.error('Failed to open URL:', err)
+				);
+			} else {
+				Alert.alert('Invalid URL', 'The scanned data is not a valid URL.');
+			}
 		}
 	};
+	
+	
 
 	if (!permission) {
 		return <View />;
@@ -68,7 +77,7 @@ export default function CameraScreen() {
 					We need your permission to show the camera
 				</Text>
 				<Button onPress={requestPermission} title='Grant Permission' />
-				<Button onPress={() => navigation.replace('/')} title='Home' />
+				<Button onPress={() => navigation.back('/map')} title='Return' />
 			</View>
 		);
 	}
@@ -89,7 +98,7 @@ export default function CameraScreen() {
 				<View style={styles.buttonContainer}>
 					<TouchableOpacity
 						style={styles.button}
-						onPress={() => navigation.replace('/')}
+						onPress={() => navigation.back('/map')}
 					>
 						<Image
 							style={styles.flip}

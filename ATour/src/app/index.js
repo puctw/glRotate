@@ -1,39 +1,28 @@
 import React from 'react';
-import { View, Text, StyleSheet, Button, Pressable } from 'react-native';
+import { View, Text, Pressable, Image } from 'react-native';
 import { Link, useRouter } from 'expo-router';
+import HomeScreenStyle from './homeStyles.js'; 
 
 const Home = () => {
-	const navigation = useRouter();
-	return (
-		<View style={styles.container}>
-			<Button
-				title='Menu'
-				onPress={() => console.log('Botão pressionado')}
-				style={styles.button}
-			/>
-			<Button title='Scanner' onPress={() => navigation.push('/camera')} />
-			<Text style={styles.text}>Bem-vindo à Tela Inicial!</Text>
-		</View>
-	);
+    const navigation = useRouter();
+    return (
+        <View style={HomeScreenStyle.container}>
+            <Image
+                source={require('../../assets/logo.png')} 
+                style={HomeScreenStyle.logo}
+                resizeMode="contain"
+            />
+            <Text style={HomeScreenStyle.text}>ATour</Text>
+            <Link push href='./map' asChild>
+                <Pressable style={HomeScreenStyle.startButton}>
+                    <Text style={HomeScreenStyle.buttonText}>Click to Start</Text>  
+                </Pressable>
+            </Link>
+            <Pressable style={HomeScreenStyle.createAccountButton} onPress={() => navigation.push('register')}>
+                <Text style={HomeScreenStyle.createAccountButtonText}>Criar conta</Text>
+            </Pressable>
+        </View>
+    );
 };
-
-const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		justifyContent: 'center',
-		alignItems: 'center',
-		backgroundColor: '#F5FCFF',
-	},
-	button: {
-		position: 'absolute',
-		top: 10,
-		left: 10,
-	},
-	text: {
-		fontSize: 20,
-		textAlign: 'center',
-		margin: 10,
-	},
-});
 
 export default Home;
