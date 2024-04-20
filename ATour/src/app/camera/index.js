@@ -46,7 +46,7 @@ export default function CameraScreen() {
 					<TouchableOpacity style={styles.button} onPress={toggleCameraType}>
 						<Image
 							style={styles.flip}
-							source={require('../../assets/flip.svg')}
+							source={require('../../../assets/flip.png')}
 						/>
 					</TouchableOpacity>
 					<Button onPress={() => navigation.replace('/')} title='Home' />
