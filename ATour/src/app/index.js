@@ -12,13 +12,15 @@ const Home = () => {
                 style={HomeScreenStyle.logo}
                 resizeMode="contain"
             />
-            <View style={HomeScreenStyle.circle} />
             <Text style={HomeScreenStyle.text}>ATour</Text>
-            <Link push href='./camera' asChild>
+            <Link push href='./map' asChild>
                 <Pressable style={HomeScreenStyle.startButton}>
                     <Text style={HomeScreenStyle.buttonText}>Click to Start</Text>  
                 </Pressable>
             </Link>
+            <Pressable style={HomeScreenStyle.createAccountButton}>
+                <Text style={HomeScreenStyle.createAccountButtonText}>Criar conta</Text>
+            </Pressable>
         </View>
     );
 };

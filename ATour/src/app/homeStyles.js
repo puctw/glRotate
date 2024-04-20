@@ -5,7 +5,7 @@ export const HomeScreenStyle = StyleSheet.create({
         flex: 1,
         justifyContent: 'space-between',
         alignItems: 'center',
-        backgroundColor: '#000',
+        backgroundColor: '#fff',
     },
     logo: {
         width: 75,
@@ -13,15 +13,6 @@ export const HomeScreenStyle = StyleSheet.create({
         position: 'absolute',
         top: '2%',
         left: '2%',
-    },
-    circle: {
-        width: 60,
-        height: 60,
-        borderRadius: 30,
-        backgroundColor: 'green',
-        position: 'absolute',
-        top: '2%',
-        right: '5%',
     },
     startButton: {
       alignSelf: 'center',
@@ -41,7 +32,20 @@ export const HomeScreenStyle = StyleSheet.create({
     buttonText: {
       fontSize: 36,
       color: 'white', 
-  },
+    },
+    createAccountButton: {
+        position: 'absolute',
+        top: 10,
+        right: 10,
+        paddingVertical: 10, 
+        paddingHorizontal: 20, 
+        backgroundColor: 'transparent',
+        borderRadius: 10, 
+    },
+    createAccountButtonText: {
+        fontSize: 20,
+        color: 'black', 
+    },
 });
 
 export default HomeScreenStyle;
