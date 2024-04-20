@@ -1,6 +1,6 @@
 import { Camera, CameraType } from 'expo-camera';
 import { useState, useEffect } from 'react';
-import { Button, StyleSheet, Text, TouchableOpacity, View, Alert } from 'react-native';
+import { Button, StyleSheet, Text, TouchableOpacity, View, Alert, Linking } from 'react-native';
 import { useRouter, Link } from 'expo-router';
 import { BarCodeScanner } from 'expo-barcode-scanner';
 
@@ -21,7 +21,24 @@ export default function CameraScreen() {
 
     const handleBarCodeScanned = ({ type, data }) => {
         setScanned(true);
-        Alert.alert('Scan successful!', `Bar code with type ${type} and data ${data} has been scanned!`);
+        Alert.alert('Scan successful!', `Bar code with type ${type} and data ${data} has been scanned!`, [
+            { text: "OK", onPress: () => checkAndNavigate(data) }
+        ]);
+    };
+
+    const checkAndNavigate = (url) => {
+        // Check if the data is a valid URL
+        const urlPattern = new RegExp('^(https?:\\/\\/)?'+ 
+            '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ 
+            '((\\d{1,3}\\.){3}\\d{1,3}))'+ 
+            '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ 
+            '(\\?[;&a-z\\d%_.~+=-]*)?'+ 
+            '(\\#[-a-z\\d_]*)?$','i'); 
+        if (urlPattern.test(url)) {
+            Linking.openURL(url).catch(err => console.error("Failed to open URL:", err));
+        } else {
+            Alert.alert("Invalid URL", "The scanned data is not a valid URL.");
+        }
     };
 
     if (!permission) {
