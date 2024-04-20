@@ -125,7 +125,6 @@ const styles = StyleSheet.create({
         alignSelf: 'flex-end'
     },
     button: {
-        flex : 1,
         width: 15,
     },
 });
