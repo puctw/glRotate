@@ -1,8 +1,9 @@
 import React from 'react';
 import { View, Text, StyleSheet, Button, Pressable } from 'react-native';
-import { Link } from 'expo-router';
+import { Link, useRouter } from 'expo-router';
 
-const HomeScreen = ({ navigation }) => {
+const Home = () => {
+	const navigation = useRouter();
 	return (
 		<View style={styles.container}>
 			<Button
@@ -39,4 +40,4 @@ const styles = StyleSheet.create({
 	},
 });
 
-export default HomeScreen;
+export default Home;

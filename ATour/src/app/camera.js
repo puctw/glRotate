@@ -1,8 +1,10 @@
 import { Camera, CameraType } from 'expo-camera';
 import { useState } from 'react';
 import { Button, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { useRouter, Link } from 'expo-router';
 
-export default function camera() {
+export default function CameraScreen() {
+	const navigation = useRouter();
 	const [type, setType] = useState(CameraType.back);
 	const [permission, requestPermission] = Camera.useCameraPermissions();
 
@@ -19,6 +21,9 @@ export default function camera() {
 					We need your permission to show the camera
 				</Text>
 				<Button onPress={requestPermission} title='grant permission' />
+				<Link replace href='/'>
+					Home
+				</Link>
 			</View>
 		);
 	}
