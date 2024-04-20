@@ -18,7 +18,7 @@ const Home = () => {
                     <Text style={HomeScreenStyle.buttonText}>Click to Start</Text>  
                 </Pressable>
             </Link>
-            <Pressable style={HomeScreenStyle.createAccountButton}>
+            <Pressable style={HomeScreenStyle.createAccountButton} onPress={() => navigation.push('register')}>
                 <Text style={HomeScreenStyle.createAccountButtonText}>Criar conta</Text>
             </Pressable>
         </View>
