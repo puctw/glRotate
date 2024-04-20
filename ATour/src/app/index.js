@@ -1,43 +1,26 @@
 import React from 'react';
-import { View, Text, StyleSheet, Button, Pressable } from 'react-native';
+import { View, Text, Pressable, Image } from 'react-native';
 import { Link, useRouter } from 'expo-router';
+import HomeScreenStyle from './homeStyles.js'; 
 
 const Home = () => {
-	const navigation = useRouter();
-	return (
-		<View style={styles.container}>
-			<Button
-				title='Menu'
-				onPress={() => console.log('Botão pressionado')}
-				style={styles.button}
-			/>
-			<Link push href='./camera' asChild>
-				<Pressable>
-					<Text>Camera</Text>
-				</Pressable>
-			</Link>
-			<Text style={styles.text}>Bem-vindo à Tela Inicial!</Text>
-		</View>
-	);
+    const navigation = useRouter();
+    return (
+        <View style={HomeScreenStyle.container}>
+            <Image
+                source={require('../../assets/logo.png')} 
+                style={HomeScreenStyle.logo}
+                resizeMode="contain"
+            />
+            <View style={HomeScreenStyle.circle} />
+            <Text style={HomeScreenStyle.text}>ATour</Text>
+            <Link push href='./camera' asChild>
+                <Pressable style={HomeScreenStyle.startButton}>
+                    <Text style={HomeScreenStyle.buttonText}>Click to Start</Text>  
+                </Pressable>
+            </Link>
+        </View>
+    );
 };
-
-const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		justifyContent: 'center',
-		alignItems: 'center',
-		backgroundColor: '#F5FCFF',
-	},
-	button: {
-		position: 'absolute',
-		top: 10,
-		left: 10,
-	},
-	text: {
-		fontSize: 20,
-		textAlign: 'center',
-		margin: 10,
-	},
-});
 
 export default Home;
