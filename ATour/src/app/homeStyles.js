@@ -5,22 +5,25 @@ export const HomeScreenStyle = StyleSheet.create({
 		flex: 1,
 		justifyContent: 'space-between',
 		alignItems: 'center',
-		backgroundColor: '#212120',
+		backgroundColor: 'white',
 	},
 	logo: {
 		width: 250,
 		height: 250,
 		marginTop: 10,
 	},
+	turism: {
+		marginBottom: 20,
+	},
 	startButton: {
 		alignSelf: 'center',
 		paddingVertical: 20,
 		paddingHorizontal: 60,
-		backgroundColor: 'green',
+		backgroundColor: '#133929',
 		width: Dimensions.get('window').width,
 		minHeight: 75,
 		borderBottomWidth: 2,
-		borderBottomColor: '#212120',
+		borderBottomColor: 'white',
 	},
 	buttonontainer: {
 		flex: 1,
