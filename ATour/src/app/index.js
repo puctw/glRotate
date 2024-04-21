@@ -11,6 +11,11 @@ const Home = () => {
 				style={HomeScreenStyle.logo}
 				resizeMode='contain'
 			/>
+			<Image
+				source={require('../../assets/turism.jpg')}
+				style={HomeScreenStyle.turism}
+				resizeMode='contain'
+			/>
 			<View style={HomeScreenStyle.buttonContainer}>
 				<Pressable
 					style={HomeScreenStyle.startButton}
