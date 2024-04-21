@@ -32,8 +32,8 @@ const MapScreen = () => {
 				});
 				const { latitude, longitude } = location.coords;
 				const newLocation = {
-					latitude,
-					longitude,
+					latitude: 40.206736,
+					longitude: -8.405763,
 					latitudeDelta: 0.0922,
 					longitudeDelta: 0.0421,
 				};
